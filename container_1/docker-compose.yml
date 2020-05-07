@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  <SERVICE_NAME>:
+    image: <YOUR_IMAGE>
+    environment:
+      - TZ=Europe/Berlin
+      - VIRTUAL_HOST=<SUBDOMAIN>.<DOMAINNAME>
+      - VIRTUAL_PORT=<VIRTUAL_PORT>
+      - LETSENCRYPT_HOST=<SUBDOMAIN>.<DOMAINNAME>
+      - LETSENCRYPT_EMAIL=<YOUR_EMAIL_FOR_SSL>
+    ...
+
+    networks:
+      - proxy 
+  
+networks:
+  proxy:
+    external:
+      name: nginx-proxy
